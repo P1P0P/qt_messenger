@@ -12,7 +12,7 @@ SOURCES += \
     main.cpp \
     widget.cpp
 
-RESOURCES += "C:\dev\Qt_Project\pussyGram\res"
+RESOURCES += "C:\dev\Qt_Project\qt_messenger\pussyGram\res"
 
 HEADERS += \
     widget.h

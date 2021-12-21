@@ -1,16 +1,12 @@
 #include "widget.h"
 #include "ui_pussyGram.h"
 #include "ui_form.h"
-#include "chats.h"
 
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Widget)
 {
     ui->setupUi(this);
-
-    //Chats* model = new Chats(this);
-    //ui->chats->setModel(model);
 
     //список чатов
     m_db = QSqlDatabase::addDatabase("QPSQL");
@@ -21,6 +17,7 @@ Widget::Widget(QWidget *parent)
     m_db.setPassword    ("bmstu");
     if (!m_db.open())
         qDebug() << ("Error: " + m_db.lastError().text());
+    m_model = new QSqlQueryModel;
     update_chats_list();
 }
 
@@ -29,8 +26,6 @@ Widget::~Widget()
     delete ui;
 }
 
-
-
 void Widget::on_chats_clicked(const QModelIndex &index)
 {
     ui->label->setText(ui->chats->currentItem()->text());
@@ -38,9 +33,10 @@ void Widget::on_chats_clicked(const QModelIndex &index)
 
 void Widget::update_chats_list()
 {
-    QStringList slist;
-    //QSqlQuery* qry = new QSqlQuery();
-    //qry->prepare();
-    ui->chats->clear();
-    m_model->setQuery("SELECT chat_name FROM pussy_chats");
+    QStringList list;
+    QSqlQuery query("SELECT chat_name FROM pussy_chats");
+    while (query.next()) {
+        list << query.value(0).toString();
+    }
+    ui->chats->addItems(list);
 }

@@ -46,14 +46,36 @@ color: rgb(255, 255, 255)
         <height>16777215</height>
        </size>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
       <property name="styleSheet">
        <string notr="true"/>
+      </property>
+      <property name="selectionMode">
+       <enum>QAbstractItemView::SingleSelection</enum>
+      </property>
+      <property name="selectionRectVisible">
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QWidget" name="layoutWidget">
       <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0">
        <item>
         <widget class="QLabel" name="label">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
          <property name="text">
           <string>TextLabel</string>
          </property>
@@ -88,7 +110,7 @@ color: rgb(255, 255, 255)
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="../build-pussyGram-Desktop_Qt_5_13_2_MinGW_64_bit-Debug/debug/qmake_qmake_immediate.qrc">
+            <iconset resource="../../build-pussyGram-Desktop_Qt_5_13_2_MinGW_64_bit-Debug/debug/qmake_qmake_immediate.qrc">
              <normaloff>:/res/kisspng-emoji-tiger-text-messaging-emoticon-sticker-lion-face-5ac99e07d28a10.8305330915231626318624.png</normaloff>:/res/kisspng-emoji-tiger-text-messaging-emoticon-sticker-lion-face-5ac99e07d28a10.8305330915231626318624.png</iconset>
            </property>
            <property name="iconSize">
@@ -141,7 +163,7 @@ color: rgb(255, 255, 255)
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="../build-pussyGram-Desktop_Qt_5_13_2_MinGW_64_bit-Debug/debug/qmake_qmake_immediate.qrc">
+            <iconset resource="../../build-pussyGram-Desktop_Qt_5_13_2_MinGW_64_bit-Debug/debug/qmake_qmake_immediate.qrc">
              <normaloff>:/res/pngaaa.com-946722 (1).png</normaloff>:/res/pngaaa.com-946722 (1).png</iconset>
            </property>
            <property name="iconSize">
@@ -172,7 +194,7 @@ color: rgb(255, 255, 255)
   </layout>
  </widget>
  <resources>
-  <include location="../build-pussyGram-Desktop_Qt_5_13_2_MinGW_64_bit-Debug/debug/qmake_qmake_immediate.qrc"/>
+  <include location="../../build-pussyGram-Desktop_Qt_5_13_2_MinGW_64_bit-Debug/debug/qmake_qmake_immediate.qrc"/>
  </resources>
  <connections/>
 </ui>
