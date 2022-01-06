@@ -1,10 +1,9 @@
-#include "widget.h"
-#include "ui_pussyGram.h"
-#include "ui_form.h"
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
 
-Widget::Widget(QWidget *parent)
-    : QWidget(parent)
-    , ui(new Ui::Widget)
+MainWindow::MainWindow(QWidget *parent)
+    : QMainWindow(parent)
+    , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
@@ -17,35 +16,34 @@ Widget::Widget(QWidget *parent)
     m_db.setPassword    ("bmstu");
     if (!m_db.open())
         qDebug() << ("Error: " + m_db.lastError().text());
-    m_model = new QSqlQueryModel;
     update_chats_list();
 }
 
-Widget::~Widget()
+MainWindow::~MainWindow()
 {
     delete ui;
 }
 
-void Widget::on_chats_clicked(const QModelIndex &index)
-{
-    ui->label->setText(ui->chats->currentItem()->text());
 
+void MainWindow::on_chats_list_clicked(const QModelIndex &index)
+{
+    ui->name_label->setText(ui->chats_list->currentItem()->text());
     //мемберы
-    ui->members->clear();
+    ui->members_list->clear();
     QStringList list;
-    QSqlQuery query("SELECT member FROM pussy_chats WHERE chat_name = '" + ui->chats->currentItem()->text() + "'");
+    QSqlQuery query("SELECT member FROM pussy_chats WHERE chat_name = '" + ui->chats_list->currentItem()->text() + "'");
     while (query.next()) {
         list << query.value(0).toString();
     }
-    ui->members->addItems(list);
+    ui->members_list->addItems(list);
 }
 
-void Widget::update_chats_list()
+void MainWindow::update_chats_list()
 {
     QStringList list;
     QSqlQuery query("SELECT chat_name FROM pussy_chats");
     while (query.next()) {
         list << query.value(0).toString();
     }
-    ui->chats->addItems(list);
+    ui->chats_list->addItems(list);
 }

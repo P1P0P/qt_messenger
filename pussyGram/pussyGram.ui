@@ -181,7 +181,7 @@ color: rgb(255, 255, 255)
        </item>
       </layout>
      </widget>
-     <widget class="QListView" name="members">
+     <widget class="QListWidget" name="members">
       <property name="maximumSize">
        <size>
         <width>300</width>
